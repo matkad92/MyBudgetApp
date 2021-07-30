@@ -1,0 +1,8 @@
+bin/
+obj/
+plan/
+KsiazkaAdresowaObiektowo.*
+Uzytkownicy.txt
+Schemat.uxf
+*.cbp
+*.txt
