@@ -1,9 +1,19 @@
 #include <iostream>
+#include "MyBudget.h"
 
 using namespace std;
 
 int main()
 {
-    cout << "Hello world!" << endl;
+    MyBudget myBudget;
+
+    myBudget.userRegister();
+    myBudget.userRegister();
+
+    myBudget.printAllUsers();
+
+
+
+
     return 0;
 }
