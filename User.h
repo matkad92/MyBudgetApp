@@ -8,24 +8,24 @@ using namespace std;
 
 class User
 {
-    int userId;
-    string userLogin;
-    string userPassword;
-    string userName;
-    string userSurname;
+    int id;
+    string login;
+    string password;
+    string name;
+    string surname;
 
 public:
-    void setUserId(int newId);
-    void setUserLogin(string newLogin);
-    void setUserPassword(string newPassword);
-    void setUserName(string newName);
-    void setUserSurname(string newSurname);
+    void setId(int newId);
+    void setLogin(string newLogin);
+    void setPassword(string newPassword);
+    void setName(string newName);
+    void setSurname(string newSurname);
 
-    int getUserId();
-    string getUserLogin();
-    string getUserPassword();
-    string getUserName();
-    string getUserSurname();
+    int getId();
+    string getLogin();
+    string getPassword();
+    string getName();
+    string getSurname();
 
 };
 
