@@ -7,6 +7,7 @@ void UserManager::userRegister(){
 
     cout << endl << "User has been created successfully."<< endl << endl;
     system("pause");
+    cout << endl;
 }
 User UserManager::getNewUserData(){
     User user;

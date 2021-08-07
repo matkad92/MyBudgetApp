@@ -2,7 +2,8 @@
 
 void UserFile::addUserToFile(User user){
 
-    bool fileExists = users.Load( "users.xml" );//zwraca true gdzy plik udalo sie otworzyc
+    CMarkup users;
+    bool fileExists = users.Load(USER_FILE_NAME);//zwraca true gdzy plik udalo sie otworzyc
 
     if (!fileExists)
     {
@@ -20,5 +21,44 @@ void UserFile::addUserToFile(User user){
     users.AddElem("Name", user.getName());
     users.AddElem("Surname", user.getSurname());
 
-    users.Save("users.xml");
+    users.Save(USER_FILE_NAME);
+}
+
+vector<User> UserFile::loadUsersFromXml(){
+
+    User user;
+    vector<User> loadedUsers;
+    CMarkup usersXml;
+    string pobraneIdString;
+    bool fileExists = usersXml.Load(USER_FILE_NAME);//zwraca true gdzy plik udalo sie otworzyc
+    if (!fileExists){
+        cout << "There is no file: " << USER_FILE_NAME << endl << "If You want to continue, create new user."<< endl;
+        getch();
+    }
+    else{
+        usersXml.ResetPos();
+        usersXml.FindElem();
+        usersXml.IntoElem();
+
+        while (usersXml.FindElem("User"))
+        {
+            usersXml.IntoElem();
+            usersXml.FindElem("UserId");
+            pobraneIdString = usersXml.GetData();
+            user.setId(atoi(pobraneIdString.c_str()));
+            usersXml.FindElem("Login");
+            user.setLogin(usersXml.GetData());
+            usersXml.FindElem("Password");
+            user.setPassword(usersXml.GetData());
+            usersXml.FindElem("Name");
+            user.setName(usersXml.GetData());
+            usersXml.FindElem("Surname");
+            user.setSurname(usersXml.GetData());
+            usersXml.OutOfElem();
+
+            loadedUsers.push_back(user);
+
+        }
+    }
+    return loadedUsers;
 }

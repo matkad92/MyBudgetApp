@@ -13,7 +13,7 @@ using namespace std;
 
 class UserManager
 {
-    vector <User> users;
+    vector<User> users;
     UserFile userFile;
 
     User getNewUserData();
@@ -21,10 +21,12 @@ class UserManager
     int getNewUserId();
 
 public:
+    UserManager(string userFileName): userFile (userFileName){
+        users = userFile.loadUsersFromXml();
+    };
     void userRegister();
     void printAllUsers();
 };
-
 
 
 #endif // USERMANAGER_H

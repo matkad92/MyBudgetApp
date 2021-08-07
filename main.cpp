@@ -5,10 +5,10 @@ using namespace std;
 
 int main()
 {
-    MyBudget myBudget;
+    MyBudget myBudget("users.xml");
 
     myBudget.userRegister();
-    myBudget.userRegister();
+    //myBudget.userRegister();
 
     myBudget.printAllUsers();
 
