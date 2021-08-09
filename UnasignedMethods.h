@@ -5,10 +5,10 @@
 
 using namespace std;
 
-class UnasignedMethods
-{
+class UnasignedMethods {
 public:
     static string takeLine();
+    static char takeChar();
 };
 
 
