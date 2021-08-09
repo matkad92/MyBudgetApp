@@ -1,6 +1,6 @@
 #include "UserManager.h"
 
-void UserManager::userRegister(){
+void UserManager::userRegister() {
     User user = getNewUserData();
     users.push_back(user);
     userFile.addUserToFile(user);
@@ -9,15 +9,15 @@ void UserManager::userRegister(){
     system("pause");
     cout << endl;
 }
-User UserManager::getNewUserData(){
+User UserManager::getNewUserData() {
     User user;
     string login;
 
-    do{
+    do {
         cout << "Enter login: ";
         cin >> login;
         user.setLogin(login);
-    }while (isLoginOccupied(user.getLogin()) == true);
+    } while (isLoginOccupied(user.getLogin()) == true);
 
     user.setId(getNewUserId());
 
@@ -40,9 +40,9 @@ User UserManager::getNewUserData(){
     return user;
 }
 
-bool UserManager::isLoginOccupied(string login){
-    for (int i = 0; i < users.size(); i++){
-        if (users[i].getLogin() == login){
+bool UserManager::isLoginOccupied(string login) {
+    for (int i = 0; i < users.size(); i++) {
+        if (users[i].getLogin() == login) {
             cout << endl << "User with this login already exists!" << endl;
             return true;
         }
@@ -50,13 +50,13 @@ bool UserManager::isLoginOccupied(string login){
     return false;
 }
 
-int UserManager::getNewUserId(){
+int UserManager::getNewUserId() {
     if (users.empty() == true) return 1;
     else return users.back().getId() + 1;
 }
 
-void UserManager::printAllUsers(){
-    for ( int i = 0; i < users.size(); i++){
+void UserManager::printAllUsers() {
+    for ( int i = 0; i < users.size(); i++) {
         cout << users[i].getId() << endl;
         cout << users[i].getLogin() << endl;
         cout << users[i].getPassword() << endl;
@@ -65,19 +65,19 @@ void UserManager::printAllUsers(){
     }
 }
 
-int UserManager::login(){
+int UserManager::login() {
     User user;
     string inputLogin = "", inputPassword = "";
 
     cout << endl << "Enter login: ";
     inputLogin = UnasignedMethods::takeLine();
 
-    for (vector<User>::iterator itr = users.begin(), vecEnd = users.end(); itr < vecEnd; itr++){
-        if (itr -> getLogin() == inputLogin){
-            for (int numberOfTries = 3; numberOfTries > 0; numberOfTries--){
+    for (vector<User>::iterator itr = users.begin(), vecEnd = users.end(); itr < vecEnd; itr++) {
+        if (itr -> getLogin() == inputLogin) {
+            for (int numberOfTries = 3; numberOfTries > 0; numberOfTries--) {
                 cout << "Enter password. Number of tries left: " << numberOfTries << ": ";
                 inputPassword = UnasignedMethods::takeLine();
-                if (itr -> getPassword() == inputPassword){
+                if (itr -> getPassword() == inputPassword) {
                     cout << "You have successfully logged in."<< endl << endl;
                     system("pause");
                     loggedInUserId = itr -> getId();
@@ -94,8 +94,13 @@ int UserManager::login(){
     return 0;
 
 }
-bool UserManager::isUserLoggedIn(){
+
+bool UserManager::isUserLoggedIn() {
     if (loggedInUserId > 0) return true;
     else return false;
+}
+
+int UserManager::getLoggedInUserId() {
+    return loggedInUserId;
 }
 
