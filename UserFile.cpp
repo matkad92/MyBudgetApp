@@ -1,12 +1,11 @@
 #include "UserFile.h"
 
-void UserFile::addUserToFile(User user){
+void UserFile::addUserToFile(User user) {
 
     CMarkup users;
     bool fileExists = users.Load(USER_FILE_NAME);//zwraca true gdzy plik udalo sie otworzyc
 
-    if (!fileExists)
-    {
+    if (!fileExists) {
         users.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
         users.AddElem("Users");//dodaje element na pozycji glownej
     }
@@ -24,24 +23,22 @@ void UserFile::addUserToFile(User user){
     users.Save(USER_FILE_NAME);
 }
 
-vector<User> UserFile::loadUsersFromXml(){
+vector<User> UserFile::loadUsersFromXml() {
 
     User user;
     vector<User> loadedUsers;
     CMarkup usersXml;
     string pobraneIdString;
     bool fileExists = usersXml.Load(USER_FILE_NAME);//zwraca true gdzy plik udalo sie otworzyc
-    if (!fileExists){
+    if (!fileExists) {
         cout << "There is no file: " << USER_FILE_NAME << endl << "If You want to continue, create new user."<< endl;
         getch();
-    }
-    else{
+    } else {
         usersXml.ResetPos();
         usersXml.FindElem();
         usersXml.IntoElem();
 
-        while (usersXml.FindElem("User"))
-        {
+        while (usersXml.FindElem("User")) {
             usersXml.IntoElem();
             usersXml.FindElem("UserId");
             pobraneIdString = usersXml.GetData();
