@@ -65,3 +65,37 @@ void UserManager::printAllUsers(){
     }
 }
 
+int UserManager::login(){
+    User user;
+    string inputLogin = "", inputPassword = "";
+
+    cout << endl << "Enter login: ";
+    inputLogin = UnasignedMethods::takeLine();
+
+    for (vector<User>::iterator itr = users.begin(), vecEnd = users.end(); itr < vecEnd; itr++){
+        if (itr -> getLogin() == inputLogin){
+            for (int numberOfTries = 3; numberOfTries > 0; numberOfTries--){
+                cout << "Enter password. Number of tries left: " << numberOfTries << ": ";
+                inputPassword = UnasignedMethods::takeLine();
+                if (itr -> getPassword() == inputPassword){
+                    cout << "You have successfully logged in."<< endl << endl;
+                    system("pause");
+                    loggedInUserId = itr -> getId();
+                    return loggedInUserId;
+                }
+            }
+            cout << "You entered wrong password 3 times." << endl;
+            system("pause");
+            return 0;
+        }
+    }
+    cout << "There is no User with this login!" << endl << endl;
+    system("pause");
+    return 0;
+
+}
+bool UserManager::isUserLoggedIn(){
+    if (loggedInUserId > 0) return true;
+    else return false;
+}
+

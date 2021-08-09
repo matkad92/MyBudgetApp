@@ -15,6 +15,7 @@ class UserManager
 {
     vector<User> users;
     UserFile userFile;
+    int loggedInUserId;
 
     User getNewUserData();
     bool isLoginOccupied(string login);
@@ -26,6 +27,8 @@ public:
     };
     void userRegister();
     void printAllUsers();
+    int login();
+    bool isUserLoggedIn();
 };
 
 

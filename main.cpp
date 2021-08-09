@@ -7,10 +7,11 @@ int main()
 {
     MyBudget myBudget("users.xml");
 
-    myBudget.userRegister();
+    //myBudget.userRegister();
     //myBudget.userRegister();
 
-    myBudget.printAllUsers();
+    //myBudget.printAllUsers();
+    myBudget.userLogin();
 
 
     return 0;
