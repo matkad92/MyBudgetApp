@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
-    MyBudget myBudget("users.xml");
+    MyBudget myBudget("users.xml", "expenses.xml", "incomes.xml");
     char choice;
     while (true) {
         if (myBudget.isUserLoggedOut()) {
