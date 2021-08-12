@@ -16,7 +16,8 @@ class MoneyManager {
 
 
 public:
-    MoneyManager (string expensesFileName, string incomesFileName, int loggedInUserId) : LOGGED_IN_USER_ID (loggedInUserId), expensesManager(expensesFileName, loggedInUserId), incomesManager(incomesFileName, loggedInUserId) {
+    MoneyManager (string expensesFileName, string incomesFileName, int loggedInUserId) :
+        LOGGED_IN_USER_ID (loggedInUserId), expensesManager(expensesFileName, loggedInUserId), incomesManager(incomesFileName, loggedInUserId) {
     };
 
 

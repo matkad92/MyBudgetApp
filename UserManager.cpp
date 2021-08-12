@@ -104,3 +104,7 @@ int UserManager::getLoggedInUserId() {
     return loggedInUserId;
 }
 
+void UserManager::logout() {
+    loggedInUserId = 0;
+}
+

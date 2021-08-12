@@ -23,5 +23,6 @@ public:
     bool isUserLoggedOut();
     char chooseMainMenuOption();
     char chooseUserMenuOption();
+    void logout();
 
 };

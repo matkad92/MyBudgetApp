@@ -29,6 +29,7 @@ public:
     int login();
     bool isUserLoggedIn();
     int getLoggedInUserId();
+    void logout();
 };
 
 

@@ -15,6 +15,12 @@ void MyBudget::userLogin() {
     }
 }
 
+void MyBudget::logout() {
+    userManager.logout();
+    delete moneyManager;
+    moneyManager = NULL;
+}
+
 bool MyBudget::isUserLoggedOut() {
     if (userManager.getLoggedInUserId() == 0) return true;
     else return false;
