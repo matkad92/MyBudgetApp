@@ -12,21 +12,22 @@ class Money {
     string date;
     int dateToSort;
     string item;
-    float amount;
+    double amount;
+    void calculateDateToSort();
+
 
 public:
 
-    void setId( int newId);
+    void setUserId( int newId);
     void setDate( string newDate);
-    void calculateDateToSort();
-    void setItem( string newItem);
-    void setAmount( float newAmount);
 
-    int getId();
+    void setItem( string newItem);
+    void setAmount(double newAmount);
+    int getUserId();
     string getDate();
     int getDateToSort();
     string getItem();
-    float getAmount();
+    double getAmount();
 
 
 };

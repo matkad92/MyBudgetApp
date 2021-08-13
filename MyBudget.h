@@ -24,5 +24,7 @@ public:
     char chooseMainMenuOption();
     char chooseUserMenuOption();
     void logout();
+    void addIncome();
+    void printAllIncomes();
 
 };

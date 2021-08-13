@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int main() {
+int mainTest() {
     MyBudget myBudget("users.xml", "expenses.xml", "incomes.xml");
     char choice;
     while (true) {
@@ -52,6 +52,18 @@ int main() {
         }
     }
 
+
+    return 0;
+}
+
+
+int main() {
+
+    MyBudget myBudget("users.xml", "expenses.xml", "incomes.xml");
+    myBudget.userLogin();
+    myBudget.addIncome();
+    myBudget.addIncome();
+    myBudget.printAllIncomes();
 
     return 0;
 }

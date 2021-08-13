@@ -61,3 +61,11 @@ char MyBudget::chooseUserMenuOption() {
 
     return choice;
 }
+
+void MyBudget::addIncome() {
+    moneyManager->addIncome();
+}
+
+void MyBudget::printAllIncomes() {
+    moneyManager->printAllIncomes();
+}

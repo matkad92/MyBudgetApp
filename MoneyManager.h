@@ -20,6 +20,9 @@ public:
         LOGGED_IN_USER_ID (loggedInUserId), expensesManager(expensesFileName, loggedInUserId), incomesManager(incomesFileName, loggedInUserId) {
     };
 
+    void addIncome();
+    void printAllIncomes();
+
 
 };
 
