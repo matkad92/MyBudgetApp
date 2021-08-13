@@ -28,7 +28,7 @@ vector<User> UserFile::loadUsersFromXml() {
     User user;
     vector<User> loadedUsers;
     CMarkup usersXml;
-    string pobraneIdString;
+    string IdString;
     bool fileExists = usersXml.Load(USER_FILE_NAME);//zwraca true gdzy plik udalo sie otworzyc
     if (!fileExists) {
         cout << "There is no file: " << USER_FILE_NAME << endl << "If You want to continue, create new user."<< endl;
@@ -41,8 +41,8 @@ vector<User> UserFile::loadUsersFromXml() {
         while (usersXml.FindElem("User")) {
             usersXml.IntoElem();
             usersXml.FindElem("UserId");
-            pobraneIdString = usersXml.GetData();
-            user.setId(atoi(pobraneIdString.c_str()));
+            IdString = usersXml.GetData();
+            user.setId(atoi(IdString.c_str()));
             usersXml.FindElem("Login");
             user.setLogin(usersXml.GetData());
             usersXml.FindElem("Password");

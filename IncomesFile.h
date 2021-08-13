@@ -2,6 +2,8 @@
 #define INCOMESFILE_H
 
 #include <iostream>
+#include <vector>
+#include <conio.h>
 
 #include "Income.h"
 #include "FileXml.h"
@@ -14,12 +16,13 @@ class IncomesFile : public FileXml {
     int lastIncomeId;
     const string INCOMES_FILE_NAME;
 public:
-    IncomesFile (string incomesFileName) : INCOMES_FILE_NAME (incomesFileName) {};
+    IncomesFile (string incomesFileName) : INCOMES_FILE_NAME (incomesFileName) {
+    };
     int getLastIncomeId();//////////////////Ta funkcja do dopracowania
     void addIncomeToFile(Income income);
+    vector<Income> loadLoggedInUserIncomes(int loggedInUserId);
 
 };
 
 
 #endif // INCOMESFILE_H
-

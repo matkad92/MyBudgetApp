@@ -27,3 +27,57 @@ void IncomesFile::addIncomeToFile(Income income) {
     incomes.Save(INCOMES_FILE_NAME);
 }
 
+vector<Income> IncomesFile::loadLoggedInUserIncomes(int loggedInUserId) {
+
+    Income income;
+    vector<Income> loadedIncomes;
+
+    CMarkup incomesXml;
+    string incomeIdString, userIdString, amountString;
+
+    bool fileExists = incomesXml.Load(INCOMES_FILE_NAME);
+    if (!fileExists) {
+        cout << "There is no file: " << INCOMES_FILE_NAME << endl << "  No incomes loaded."<< endl;
+        getch();
+    } else {
+        incomesXml.ResetPos();
+        incomesXml.FindElem();
+        incomesXml.IntoElem();
+
+        while (incomesXml.FindElem("Income")) {
+            incomesXml.IntoElem();
+
+            incomesXml.FindElem("IncomeId");
+            incomeIdString = incomesXml.GetData();
+            income.setIncomeId(atoi(incomeIdString.c_str()));
+
+            incomesXml.FindElem("UserId");
+            userIdString = incomesXml.GetData();
+            income.setUserId(atoi(userIdString.c_str()));
+
+            incomesXml.FindElem("IncomeName");
+            income.setItem(incomesXml.GetData());
+
+            incomesXml.FindElem("Amount");
+            amountString = incomesXml.GetData();
+            income.setAmount(atof(amountString.c_str()));
+
+            incomesXml.FindElem("Date");
+            income.setDate(incomesXml.GetData());
+
+            incomesXml.OutOfElem();
+
+            if (income.getUserId() == loggedInUserId) loadedIncomes.push_back(income);
+
+        }
+    }
+
+
+    return loadedIncomes;
+}
+
+
+
+
+
+

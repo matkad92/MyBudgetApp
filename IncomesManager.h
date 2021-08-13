@@ -19,10 +19,12 @@ class IncomesManager {
 
 public:
     IncomesManager (string incomesFileName, int loggedInUserId) : LOGGED_IN_USER_ID (loggedInUserId), INCOMES_FILE_NAME(incomesFileName), incomesFile(incomesFileName) {
-    };
+        incomes = incomesFile.loadLoggedInUserIncomes(LOGGED_IN_USER_ID);
+    }
     void addIncome();
     Income getNewIncomeData();
     void printAllIncomes();
+
 
 
 
