@@ -5,10 +5,15 @@ void IncomesManager::addIncome() {
     Income income;
 
     system ("cls");
-    cout << " >>> ADDING NEW INCOME <<< ";
+    cout << " >>> ADDING NEW INCOME <<< " << endl;
     income = getNewIncomeData ();
-
     incomes.push_back(income);
+
+    incomesFile.addIncomeToFile(income);
+    cout << endl << "Income has been added successfully."<< endl << endl;
+    system("pause");
+    cout << endl;
+
 }
 
 Income IncomesManager::getNewIncomeData () {
@@ -23,7 +28,7 @@ Income IncomesManager::getNewIncomeData () {
     cout << " Enter the amount: ";///////////////////////////dodac zamiane kropki na przecinek
     income.setAmount(atof(UnasignedMethods::takeLine().c_str()));
 
-    cout << " Enter income date in format yyyy-mm-dd : "; /////////////////////////dodac sprawdzenie formatu daty w setterze
+    cout << " Enter income date in format yyyy-mm-dd : "; /////////////////////////dodac sprawdzenie formatu daty w setterze oraz zapytac, czy uzytkownik chce z dzisiejsza data czy z inna
     income.setDate(UnasignedMethods::takeLine());
 
     return income;
@@ -50,6 +55,7 @@ void IncomesManager::printIncome(Income income) {
     cout << endl << "Income Id:                 " << income.getIncomeId() << endl;
     cout << "UserId:               " << income.getUserId() << endl;
     cout << "Income name:           " << income.getItem() << endl;
+    cout << "Income amount:           " << income.getAmount() << endl;
     cout << "Date:     " << income.getDate() << endl;
     cout << "Date to sort:              " << income.getDateToSort() << endl;
 }

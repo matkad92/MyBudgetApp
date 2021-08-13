@@ -18,7 +18,7 @@ class IncomesManager {
     void printIncome(Income income);
 
 public:
-    IncomesManager (string incomesFileName, int loggedInUserId) : LOGGED_IN_USER_ID (loggedInUserId), INCOMES_FILE_NAME(incomesFileName) {
+    IncomesManager (string incomesFileName, int loggedInUserId) : LOGGED_IN_USER_ID (loggedInUserId), INCOMES_FILE_NAME(incomesFileName), incomesFile(incomesFileName) {
     };
     void addIncome();
     Income getNewIncomeData();

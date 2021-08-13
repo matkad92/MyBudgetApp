@@ -12,9 +12,14 @@ using namespace std;
 class IncomesFile : public FileXml {
 
     int lastIncomeId;
+    const string INCOMES_FILE_NAME;
 public:
-    int getLastIncomeId();
+    IncomesFile (string incomesFileName) : INCOMES_FILE_NAME (incomesFileName) {};
+    int getLastIncomeId();//////////////////Ta funkcja do dopracowania
+    void addIncomeToFile(Income income);
+
 };
 
 
 #endif // INCOMESFILE_H
+
