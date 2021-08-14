@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <conio.h>
+#include <string>
 
 #include "Income.h"
 #include "FileXml.h"

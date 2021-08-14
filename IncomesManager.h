@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <conio.h>
+#include <time.h>
 #include "Income.h"
 #include "IncomesFile.h"
 
@@ -16,6 +17,7 @@ class IncomesManager {
     const int LOGGED_IN_USER_ID;
     IncomesFile incomesFile;
     void printIncome(Income income);
+    string getSystemDate();
 
 public:
     IncomesManager (string incomesFileName, int loggedInUserId) : LOGGED_IN_USER_ID (loggedInUserId), INCOMES_FILE_NAME(incomesFileName), incomesFile(incomesFileName) {
