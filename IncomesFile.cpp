@@ -25,6 +25,7 @@ void IncomesFile::addIncomeToFile(Income income) {
     incomes.AddElem("DateToSort", income.getDateToSort());
 
     incomes.Save(INCOMES_FILE_NAME);
+    lastIncomeId++;
 }
 
 vector<Income> IncomesFile::loadLoggedInUserIncomes(int loggedInUserId) {
@@ -38,6 +39,7 @@ vector<Income> IncomesFile::loadLoggedInUserIncomes(int loggedInUserId) {
     bool fileExists = incomesXml.Load(INCOMES_FILE_NAME);
     if (!fileExists) {
         cout << "There is no file: " << INCOMES_FILE_NAME << endl << "  No incomes loaded."<< endl;
+        lastIncomeId = 0;
         getch();
     } else {
         incomesXml.ResetPos();
@@ -66,10 +68,11 @@ vector<Income> IncomesFile::loadLoggedInUserIncomes(int loggedInUserId) {
             income.setDate(incomesXml.GetData());
 
             incomesXml.OutOfElem();
+            lastIncomeId = income.getUserId();
 
             if (income.getUserId() == loggedInUserId) loadedIncomes.push_back(income);
-
         }
+        //lastIncomeId = loadedIncomes.back().getIncomeId();
     }
 
 

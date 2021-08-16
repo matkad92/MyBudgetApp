@@ -22,13 +22,13 @@ Income IncomesManager::getNewIncomeData () {
     income.setIncomeId((incomesFile.getLastIncomeId()+1));
     income.setUserId(LOGGED_IN_USER_ID);
 
-    cout << " Enter income name: ";
+    cout << "Enter income name: ";
     income.setItem(UnasignedMethods::takeLine());
 
-    cout << " Enter the amount: ";///////////////////////////dodac zamiane przecinek na kropke
+    cout << "Enter the amount: ";///////////////////////////dodac zamiane przecinek na kropke, zamienic na string przed zapisaniem w uml, zeby zapisywal tez to co po kropce
     income.setAmount(atof(UnasignedMethods::takeLine().c_str()));
 
-    cout << " To add income with current date press '1', to add income with custom date press '2'." <<endl;
+    cout << "To add income with current date press '1', to add income with custom date press '2'." <<endl;
 
     char choice =UnasignedMethods::takeChar();
     switch (choice) {
@@ -36,7 +36,7 @@ Income IncomesManager::getNewIncomeData () {
         income.setDate(DateOperations::getSystemDate());
         break;
     case '2':
-        cout << " Enter income date in format yyyy-mm-dd (starting from 2000-01-01) : "; /////////////////////////dodac sprawdzenie formatu daty w setterze
+        cout << "Enter income date in format yyyy-mm-dd (starting from 2000-01-01) : ";
         income.setDate(UnasignedMethods::takeLine());
         break;
     default:
