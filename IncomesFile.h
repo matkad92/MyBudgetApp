@@ -19,7 +19,7 @@ class IncomesFile : public FileXml {
 public:
     IncomesFile (string incomesFileName) : INCOMES_FILE_NAME (incomesFileName) {
     };
-    int getLastIncomeId();//////////////////Ta funkcja do dopracowania
+    int getLastIncomeId();
     void addIncomeToFile(Income income);
     vector<Income> loadLoggedInUserIncomes(int loggedInUserId);
 

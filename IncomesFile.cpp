@@ -68,11 +68,11 @@ vector<Income> IncomesFile::loadLoggedInUserIncomes(int loggedInUserId) {
             income.setDate(incomesXml.GetData());
 
             incomesXml.OutOfElem();
-            lastIncomeId = income.getUserId();
+            lastIncomeId = income.getIncomeId();
 
             if (income.getUserId() == loggedInUserId) loadedIncomes.push_back(income);
         }
-        //lastIncomeId = loadedIncomes.back().getIncomeId();
+
     }
 
 

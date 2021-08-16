@@ -129,7 +129,7 @@ string DateOperations::takeNewDateToCheck()
     cout << "Date format is wrong, try again using yyyy-mm-dd format, starting from 2000-01-01.";
     cout << endl << "Date: ";
     cin.sync();
-    cin >> newDate ; //zamienic na UnasignedMethods.getline
+    newDate = UnasignedMethods::takeLine();
     return newDate;
 }
 

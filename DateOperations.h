@@ -4,6 +4,8 @@
 #include <iostream>
 #include <time.h>
 
+#include "UnasignedMethods.h"
+
 using namespace std;
 
 class DateOperations {
