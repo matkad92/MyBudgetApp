@@ -25,7 +25,7 @@ Income IncomesManager::getNewIncomeData () {
     cout << " Enter income name: ";
     income.setItem(UnasignedMethods::takeLine());
 
-    cout << " Enter the amount: ";///////////////////////////dodac zamiane kropki na przecinek
+    cout << " Enter the amount: ";///////////////////////////dodac zamiane przecinek na kropke
     income.setAmount(atof(UnasignedMethods::takeLine().c_str()));
 
     cout << " To add income with current date press '1', to add income with custom date press '2'." <<endl;
@@ -33,15 +33,15 @@ Income IncomesManager::getNewIncomeData () {
     char choice =UnasignedMethods::takeChar();
     switch (choice) {
     case '1':
-        income.setDate(getSystemDate());
+        income.setDate(DateOperations::getSystemDate());
         break;
     case '2':
-        cout << " Enter income date in format yyyy-mm-dd : "; /////////////////////////dodac sprawdzenie formatu daty w setterze
+        cout << " Enter income date in format yyyy-mm-dd (starting from 2000-01-01) : "; /////////////////////////dodac sprawdzenie formatu daty w setterze
         income.setDate(UnasignedMethods::takeLine());
         break;
     default:
         cout << endl << "There is no such option - income added with current date." << endl << endl;
-        income.setDate(getSystemDate());
+        income.setDate(DateOperations::getSystemDate());
         system("pause");
         break;
     }
@@ -68,27 +68,11 @@ void IncomesManager::printAllIncomes() {
 void IncomesManager::printIncome(Income income) {
 
     cout << endl << "Income Id:                 " << income.getIncomeId() << endl;
-    cout << "UserId:               " << income.getUserId() << endl;
-    cout << "Income name:           " << income.getItem() << endl;
-    cout << "Income amount:           " << income.getAmount() << endl;    cout << "Date:     " << income.getDate() << endl;
+    cout << "UserId:                    " << income.getUserId() << endl;
+    cout << "Income name:               " << income.getItem() << endl;
+    cout << "Income amount:             " << income.getAmount() << endl;
+    cout << "Date:                      " << income.getDate() << endl;
     cout << "Date to sort:              " << income.getDateToSort() << endl;
 }
 
-string IncomesManager::getSystemDate() {
 
-    time_t localTime;
-    struct tm * ptr;
-    time( & localTime );
-    ptr = localtime( & localTime );
-
-    string date;
-    string year = to_string(ptr->tm_year+1900);
-    string month = to_string(ptr->tm_mon);
-    string day = to_string(ptr->tm_mday);
-    if (ptr->tm_mon < 10) {
-        date = year + "-0" + month + "-" + day;
-    } else {
-        date = year + "-" + month + "-" + day;
-    }
-    return date;
-}

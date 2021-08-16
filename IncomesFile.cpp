@@ -20,7 +20,7 @@ void IncomesFile::addIncomeToFile(Income income) {
     incomes.AddElem("IncomeId", income.getIncomeId());
     incomes.AddElem("UserId", income.getUserId());
     incomes.AddElem("IncomeName", income.getItem());
-    incomes.AddElem("Amount", income.getAmount());
+    incomes.AddElem("Amount", income.getAmount());//zamienic na string bo cos jest z zapisem
     incomes.AddElem("Date", income.getDate());
     incomes.AddElem("DateToSort", income.getDateToSort());
 

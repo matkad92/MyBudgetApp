@@ -3,6 +3,7 @@
 
 
 #include <iostream>
+#include "DateOperations.h"
 
 using namespace std;
 
@@ -13,7 +14,6 @@ class Money {
     int dateToSort;
     string item;
     double amount;
-    void calculateDateToSort();
 
 
 public:

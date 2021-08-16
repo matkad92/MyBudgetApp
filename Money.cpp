@@ -5,13 +5,13 @@ void Money::setUserId(int newId) {
 }
 
 void Money::setDate(string newDate) {
-    date = newDate;
-    calculateDateToSort();
+    DateOperations dateOperation;
+    if (dateOperation.checkDateFormat(newDate) == true) {
+        date = dateOperation.getCorrectDateString();
+        dateToSort = dateOperation.getDateToSort();
+    } else cout << "Date can not be set.";
 }
 
-void Money::calculateDateToSort() {/////////////////////////////
-
-}
 
 void Money::setItem(string newItem) {
     item = newItem;
