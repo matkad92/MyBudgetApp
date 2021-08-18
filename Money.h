@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "DateOperations.h"
+#include "UnasignedMethods.h"
 
 using namespace std;
 
@@ -14,6 +15,8 @@ class Money {
     int dateToSort;
     string item;
     double amount;
+    string amountString;
+    string takeNewAmountToCheck();
 
 
 public:
@@ -22,7 +25,7 @@ public:
     void setDate( string newDate);
 
     void setItem( string newItem);
-    void setAmount(double newAmount);
+    void setAmount(string newAmount);
     int getUserId();
     string getDate();
     int getDateToSort();

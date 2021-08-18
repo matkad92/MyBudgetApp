@@ -17,8 +17,51 @@ void Money::setItem(string newItem) {
     item = newItem;
 }
 
-void Money::setAmount(double newAmount) {
-    amount = newAmount;
+string Money::takeNewAmountToCheck()
+{
+    string newAmount;
+    cout << "Amount format is wrong, try again using format _ _ _ _ _ _ _ _ ._ _  " << endl;
+    cout << endl << "Amount: ";
+    cin.sync();
+    newAmount = UnasignedMethods::takeLine();
+    return newAmount;
+}
+
+void Money::setAmount(string newAmount) {
+
+    int wrongChars = 0;
+    while (1)
+    {
+        if (newAmount[newAmount.length()-3] == ',')
+        {
+            newAmount[newAmount.length()-3] == '.'
+        }
+        if ((newAmount[newAmount.length()-3] == '.') && (newAmount.length() >= 4))
+        {
+            for ( int i = 0; i < (newAmount.length()-3) ; i++ )
+            {
+                if ( isdigit(newAmount[i]) && isdigit(newAmount[newAmount.length()-1]) && isdigit(newAmount[newAmount.length()-2]) )
+                {
+                    continue;
+                }
+                else wrongChars ++;
+            }
+            if (wrongChars == 0)
+            {
+                amountString = newAmount;
+                //policz na inny format
+                return;
+            }
+            else newAmount = takeNewAmountToCheck();
+
+        }
+        else
+        {
+            newAmount = takeNewAmountToCheck();
+        }
+    }
+
+
 }
 
 int Money::getUserId() {

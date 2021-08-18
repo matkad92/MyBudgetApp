@@ -21,7 +21,6 @@ string DateOperations::getSystemDate() {
 
 bool DateOperations::checkDateFormat(string checkedDate) {
 
-    bool isCorrect =  false;
     string dateDayString ;
     string dateMonthString ;
     string dateYearString ;
