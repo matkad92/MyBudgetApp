@@ -3,8 +3,8 @@
 
 using namespace std;
 
-int main() {
-    MyBudget myBudget("users.xml");
+int mainTest() {
+    MyBudget myBudget("users.xml", "expenses.xml", "incomes.xml");
     char choice;
     while (true) {
         if (myBudget.isUserLoggedOut()) {
@@ -52,6 +52,18 @@ int main() {
         }
     }
 
+
+    return 0;
+}
+
+
+int main() {
+
+    MyBudget myBudget("users.xml", "expenses.xml", "incomes.xml");
+    myBudget.userLogin();
+    myBudget.addIncome();
+    myBudget.addIncome();
+    myBudget.printAllIncomes();
 
     return 0;
 }

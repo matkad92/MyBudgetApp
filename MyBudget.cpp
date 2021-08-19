@@ -11,8 +11,14 @@ void MyBudget::printAllUsers() {
 void MyBudget::userLogin() {
     userManager.login();
     if (userManager.isUserLoggedIn()) {
-        cout << "user is logged in";
+        moneyManager =  new MoneyManager (EXPENSES_FILE_NAME , INCOMES_FILE_NAME, userManager.getLoggedInUserId());
     }
+}
+
+void MyBudget::logout() {
+    userManager.logout();
+    delete moneyManager;
+    moneyManager = NULL;
 }
 
 bool MyBudget::isUserLoggedOut() {
@@ -54,4 +60,12 @@ char MyBudget::chooseUserMenuOption() {
     choice = UnasignedMethods::takeChar();
 
     return choice;
+}
+
+void MyBudget::addIncome() {
+    moneyManager->addIncome();
+}
+
+void MyBudget::printAllIncomes() {
+    moneyManager->printAllIncomes();
 }
