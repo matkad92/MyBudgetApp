@@ -51,8 +51,8 @@ bool UserManager::isLoginOccupied(string login) {
 }
 
 int UserManager::getNewUserId() {
-    if (users.empty() == true) return 1;
-    else return users.back().getId() + 1;
+
+    return (users.empty()) ? 1 : users.back().getId() + 1;
 }
 
 void UserManager::printAllUsers() {

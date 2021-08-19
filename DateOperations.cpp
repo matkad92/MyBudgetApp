@@ -116,9 +116,9 @@ int DateOperations::dayPerMonth (int year, int numberOfMonth)
 
     else if (numberOfMonth==2)
     {
-        if (((year%4 == 0) && (year%100 != 0)) || (year%400 == 0))
-             return 29;
-        else return 28;
+
+        return (((year%4 == 0) && (year%100 != 0)) || (year%400 == 0))? 29 : 28; //Operator trojargumentowy
+
     }
 }
 
