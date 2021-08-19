@@ -64,6 +64,9 @@ int main() {
     myBudget.addIncome();
     myBudget.addIncome();
     myBudget.printAllIncomes();
+    myBudget.addExpense();
+    myBudget.addExpense();
+    myBudget.printAllExpenses();
 
     return 0;
 }

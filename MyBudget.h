@@ -26,5 +26,7 @@ public:
     void logout();
     void addIncome();
     void printAllIncomes();
+    void addExpense();
+    void printAllExpenses();
 
 };

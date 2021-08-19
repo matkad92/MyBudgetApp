@@ -3,8 +3,10 @@
 
 #include <iostream>
 #include <vector>
+#include <conio.h>
 #include "Expense.h"
 #include "ExpensesFile.h"
+#include "DateOperations.h"
 
 using namespace std;
 
@@ -12,12 +14,18 @@ class ExpensesManager {
     vector <Expense> expenses;
     const string EXPENSES_FILE_NAME;
     const int LOGGED_IN_USER_ID;
-    ExpensesFile expensesfile;
+    ExpensesFile expensesFile;
+    void printExpense(Expense expense);
 
 public:
-    ExpensesManager (string expensesFileName, int loggedInUserId) : LOGGED_IN_USER_ID (loggedInUserId), EXPENSES_FILE_NAME(expensesFileName){
-        //wczytywanie do pamieci wydatkow
+    ExpensesManager (string expensesFileName, int loggedInUserId) : LOGGED_IN_USER_ID (loggedInUserId), EXPENSES_FILE_NAME(expensesFileName), expensesFile(expensesFileName) {
+        expenses = expensesFile.loadLoggedInUserExpenses(LOGGED_IN_USER_ID);
     };
+    void addExpense();
+    Expense getNewExpenseData();
+    void printAllExpenses();
+
+
 
 };
 
