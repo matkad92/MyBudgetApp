@@ -20,7 +20,7 @@ void IncomesFile::addIncomeToFile(Income income) {
     incomes.AddElem("IncomeId", income.getIncomeId());
     incomes.AddElem("UserId", income.getUserId());
     incomes.AddElem("IncomeName", income.getItem());
-    incomes.AddElem("Amount", income.getAmount());//zamienic na string bo cos jest z zapisem
+    incomes.AddElem("Amount", income.getAmountString());
     incomes.AddElem("Date", income.getDate());
     incomes.AddElem("DateToSort", income.getDateToSort());
 
@@ -62,7 +62,7 @@ vector<Income> IncomesFile::loadLoggedInUserIncomes(int loggedInUserId) {
 
             incomesXml.FindElem("Amount");
             amountString = incomesXml.GetData();
-            income.setAmount(atof(amountString.c_str()));
+            income.setAmount(amountString);
 
             incomesXml.FindElem("Date");
             income.setDate(incomesXml.GetData());

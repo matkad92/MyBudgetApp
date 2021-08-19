@@ -28,7 +28,6 @@ Income IncomesManager::getNewIncomeData () {
     cout << "Enter the amount in format _ _ _ _ _ _ _ _ ._ _ : ";///////////////////////////dodac zamiane przecinek na kropke, zamienic na string przed zapisaniem w uml, zeby zapisywal tez to co po kropce
 
     income.setAmount(UnasignedMethods::takeLine());
-    //income.setAmount(atof(UnasignedMethods::takeLine().c_str()));
 
     cout << "To add income with current date press '1', to add income with custom date press '2'." <<endl;
 

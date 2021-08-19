@@ -20,8 +20,8 @@ void Money::setItem(string newItem) {
 string Money::takeNewAmountToCheck()
 {
     string newAmount;
-    cout << "Amount format is wrong, try again using format _ _ _ _ _ _ _ _ ._ _  " << endl;
-    cout << endl << "Amount: ";
+    cout << "Amount format is wrong, try again using format _ _ _ _ _ _ _ _ ._ _ " << endl;
+    cout << "Amount: ";
     cin.sync();
     newAmount = UnasignedMethods::takeLine();
     return newAmount;
@@ -29,12 +29,13 @@ string Money::takeNewAmountToCheck()
 
 void Money::setAmount(string newAmount) {
 
-    int wrongChars = 0;
+    int wrongChars ;
     while (1)
     {
+        wrongChars = 0;
         if (newAmount[newAmount.length()-3] == ',')
         {
-            newAmount[newAmount.length()-3] == '.'
+            newAmount[newAmount.length()-3] = '.';
         }
         if ((newAmount[newAmount.length()-3] == '.') && (newAmount.length() >= 4))
         {
@@ -49,7 +50,7 @@ void Money::setAmount(string newAmount) {
             if (wrongChars == 0)
             {
                 amountString = newAmount;
-                //policz na inny format
+                amount = atof(amountString.c_str());
                 return;
             }
             else newAmount = takeNewAmountToCheck();
@@ -83,4 +84,9 @@ string Money::getItem() {
 double Money::getAmount() {
     return amount;
 }
+
+string Money::getAmountString() {
+    return amountString;
+}
+
 

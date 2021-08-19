@@ -31,6 +31,7 @@ public:
     int getDateToSort();
     string getItem();
     double getAmount();
+    string getAmountString();
 
 
 };
