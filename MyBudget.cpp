@@ -69,3 +69,11 @@ void MyBudget::addIncome() {
 void MyBudget::printAllIncomes() {
     moneyManager->printAllIncomes();
 }
+
+void MyBudget::addExpense() {
+    moneyManager->addExpense();
+}
+
+void MyBudget::printAllExpenses() {
+    moneyManager->printAllExpenses();
+}
