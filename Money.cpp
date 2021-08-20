@@ -17,8 +17,7 @@ void Money::setItem(string newItem) {
     item = newItem;
 }
 
-string Money::takeNewAmountToCheck()
-{
+string Money::takeNewAmountToCheck() {
     string newAmount;
     cout << "Amount format is wrong, try again using format _ _ _ _ _ _ _ _ ._ _ " << endl;
     cout << "Amount: ";
@@ -30,34 +29,24 @@ string Money::takeNewAmountToCheck()
 void Money::setAmount(string newAmount) {
 
     int wrongChars ;
-    while (1)
-    {
+    while (1) {
         wrongChars = 0;
-        if (newAmount[newAmount.length()-3] == ',')
-        {
+        if (newAmount[newAmount.length()-3] == ',') {
             newAmount[newAmount.length()-3] = '.';
         }
-        if ((newAmount[newAmount.length()-3] == '.') && (newAmount.length() >= 4))
-        {
-            for ( int i = 0; i < (newAmount.length()-3) ; i++ )
-            {
-                if ( isdigit(newAmount[i]) && isdigit(newAmount[newAmount.length()-1]) && isdigit(newAmount[newAmount.length()-2]) )
-                {
+        if ((newAmount[newAmount.length()-3] == '.') && (newAmount.length() >= 4)) {
+            for ( int i = 0; i < (newAmount.length()-3) ; i++ ) {
+                if ( isdigit(newAmount[i]) && isdigit(newAmount[newAmount.length()-1]) && isdigit(newAmount[newAmount.length()-2]) ) {
                     continue;
-                }
-                else wrongChars ++;
+                } else wrongChars ++;
             }
-            if (wrongChars == 0)
-            {
+            if (wrongChars == 0) {
                 amountString = newAmount;
                 amount = atof(amountString.c_str());
                 return;
-            }
-            else newAmount = takeNewAmountToCheck();
+            } else newAmount = takeNewAmountToCheck();
 
-        }
-        else
-        {
+        } else {
             newAmount = takeNewAmountToCheck();
         }
     }

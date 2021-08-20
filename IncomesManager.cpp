@@ -69,11 +69,14 @@ void IncomesManager::printAllIncomes() {
 void IncomesManager::printIncome(Income income) {
 
     cout << endl << "Income Id:                 " << income.getIncomeId() << endl;
-    cout << "UserId:                    " << income.getUserId() << endl;
+    //cout << "UserId:                    " << income.getUserId() << endl;
     cout << "Income name:               " << income.getItem() << endl;
     cout << "Income amount:             " << income.getAmount() << endl;
     cout << "Date:                      " << income.getDate() << endl;
-    cout << "Date to sort:              " << income.getDateToSort() << endl;
+    //cout << "Date to sort:              " << income.getDateToSort() << endl;
 }
 
+vector<Income> IncomesManager::getIncomes() {
+    return incomes;
+}
 

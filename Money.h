@@ -19,7 +19,14 @@ class Money {
     string takeNewAmountToCheck();
 
 
+
 public:
+
+    bool operator < (Money& money)
+    {
+        return (getDateToSort() < money.getDateToSort());
+    }
+
 
     void setUserId( int newId);
     void setDate( string newDate);

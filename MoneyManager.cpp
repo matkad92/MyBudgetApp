@@ -15,3 +15,126 @@ void MoneyManager::addExpense() {
 void MoneyManager::printAllExpenses() {
     expensesManager.printAllExpenses();
 }
+
+void MoneyManager::balanceForTheCurrentMonth() {
+
+    vector<Income> currentMonthIncomes;
+    vector<Expense> currentMonthExpenses;
+    Income income;
+    Expense expense;
+    string dateFromVector;
+    int monthToCompare;
+    int yearToCompare;
+
+    time_t localTime;
+    struct tm * ptr;
+    time( & localTime );
+    ptr = localtime( & localTime );
+
+    for (int i = 0; i < expensesManager.expenses.size(); i++) {
+        dateFromVector = expensesManager.expenses[i].getDate();
+
+        monthToCompare = takeMonthFromDate(dateFromVector);
+        yearToCompare = takeYearFromDate(dateFromVector);
+
+        if (yearToCompare == (ptr->tm_year+1900) && monthToCompare == (ptr->tm_mon+1)) {
+            currentMonthExpenses.push_back(expensesManager.expenses[i]);
+
+        }
+    }
+
+    for (int i = 0; i < incomesManager.incomes.size(); i++) {
+        dateFromVector = incomesManager.incomes[i].getDate();
+
+        monthToCompare = takeMonthFromDate(dateFromVector);
+        yearToCompare = takeYearFromDate(dateFromVector);
+
+        if (yearToCompare == (ptr->tm_year+1900) && monthToCompare == (ptr->tm_mon+1)) {
+            currentMonthIncomes.push_back(incomesManager.incomes[i]);
+
+        }
+    }
+
+
+    sort(currentMonthIncomes.begin(), currentMonthIncomes.end());
+    sort(currentMonthExpenses.begin(), currentMonthExpenses.end());
+
+    printChosenIncomesAndExpenses(currentMonthIncomes, currentMonthExpenses);
+    printBalance (currentMonthIncomes, currentMonthExpenses);
+}
+
+int MoneyManager::takeMonthFromDate(string dateFromVector) {
+
+    int month;
+    string monthString;
+
+    monthString = dateFromVector.substr(5,2);
+    month = atoi(monthString.c_str());
+
+    return month;
+}
+
+int MoneyManager::takeYearFromDate(string dateFromVector) {
+
+    int year;
+    string yearString;
+
+    yearString = dateFromVector.substr(0,4);
+    year = atoi(yearString.c_str());
+
+    return year;
+}
+
+void MoneyManager::printChosenIncomesAndExpenses(vector<Income> incomes, vector<Expense> expenses) {
+
+    system("cls");
+
+    if(!incomes.empty()) {
+        cout << "            >>>INCOMES<<<" << endl;
+        cout << "-----------------------------------------------" << endl;
+        for (vector<Income>::iterator itr = incomes.begin(), VecEnd = incomes.end(); itr!= VecEnd; itr++) {
+            incomesManager.printIncome(*itr);
+        }
+        cout << endl << endl << endl;
+    } else {
+        cout << endl << "There are no incomes."<< endl << endl;
+    }
+
+    if(!expenses.empty()) {
+        cout << "            >>>EXPENSES<<<" << endl;
+        cout << "-----------------------------------------------" << endl;
+        for (vector<Expense>::iterator itr = expenses.begin(), VecEnd = expenses.end(); itr != VecEnd; itr++) {
+            expensesManager.printExpense(*itr);
+        }
+        cout << endl;
+    } else {
+        cout << endl << "There are no expenses."<< endl << endl;
+    }
+
+}
+
+void MoneyManager::printBalance (vector<Income> incomes, vector<Expense> expenses) {
+
+    double incomesSum = 0,  expensesSum = 0;
+
+    for (vector<Income>::iterator itr = incomes.begin(), vecEnd = incomes.end(); itr != vecEnd; itr++) {
+        incomesSum += itr->getAmount();
+    }
+    for (vector<Expense>::iterator itr = expenses.begin(), vecEnd = expenses.end(); itr != vecEnd; itr++) {
+        expensesSum += itr->getAmount();
+    }
+
+    double balance = incomesSum - expensesSum;
+
+    cout << "-----------------------------------------------" << endl;
+    cout << "INCOMES SUM : " << fixed << setprecision(2) << incomesSum << endl;
+    cout << "EXPENSES SUM : " << fixed << setprecision(2) << expensesSum << endl;
+    cout << "-----------------------------------------------" << endl;
+    cout << "BALANCE : " << fixed << setprecision(2) << balance << endl;
+
+    if (balance <= 0) cout << endl << "YOU SHOULD HAVE SAVED MORE! " << endl;
+
+    getch();
+
+}
+

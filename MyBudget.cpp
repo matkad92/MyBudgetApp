@@ -77,3 +77,7 @@ void MyBudget::addExpense() {
 void MyBudget::printAllExpenses() {
     moneyManager->printAllExpenses();
 }
+
+void MyBudget::balanceForTheCurrentMonth() {
+    moneyManager->balanceForTheCurrentMonth();
+}

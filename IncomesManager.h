@@ -10,9 +10,13 @@
 #include "DateOperations.h"
 
 
+
 using namespace std;
 
 class IncomesManager {
+
+    friend class MoneyManager;
+
     vector<Income> incomes;
     const string INCOMES_FILE_NAME;
     const int LOGGED_IN_USER_ID;
@@ -27,7 +31,7 @@ public:
     void addIncome();
     Income getNewIncomeData();
     void printAllIncomes();
-
+    vector <Income> getIncomes();
 
 
 

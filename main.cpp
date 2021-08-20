@@ -34,7 +34,7 @@ int mainTest() {
                 //myBudget.addExpense();
                 break;
             case '3':
-                //myBudget.balance();
+                //myBudget.balanceForTheCurrentMonth();
                 break;
             case '4':
                 //myBudget.lastMonthBalance();
@@ -43,7 +43,7 @@ int mainTest() {
                 //myBudget.chosenPeriodBalance();
                 break;
             case '6':
-                //myBudget.passwordChange();
+                //myBudget.passwordChange(); //To do zaimplementowania
                 break;
             case '9':
                 //myBudget.logOut();
@@ -61,12 +61,22 @@ int main() {
 
     MyBudget myBudget("users.xml", "expenses.xml", "incomes.xml");
     myBudget.userLogin();
-    myBudget.addIncome();
+    myBudget.balanceForTheCurrentMonth();
+    getch();
+    /*myBudget.addIncome();
     myBudget.addIncome();
     myBudget.printAllIncomes();
     myBudget.addExpense();
     myBudget.addExpense();
-    myBudget.printAllExpenses();
+    myBudget.printAllExpenses();*/
+    //myBudget.addExpense();
+    //myBudget.addExpense();
+    //myBudget.addExpense();
+    //myBudget.addExpense();
+    //myBudget.addIncome();
+    //myBudget.addIncome();
+    //myBudget.addIncome();
+    //myBudget.addIncome();
 
     return 0;
 }

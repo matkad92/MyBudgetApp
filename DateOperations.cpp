@@ -35,12 +35,9 @@ bool DateOperations::checkDateFormat(string checkedDate) {
     ptr = localtime( & localTime );
 
     while (1)
-    {
-        if (checkedDate.length() == 10)
-        {
+        if (checkedDate.length() == 10) {
             if (checkedDate[4] == '-' && checkedDate[7] == '-' && isdigit(checkedDate[0]) && isdigit(checkedDate[1]) && isdigit(checkedDate[2])
-            && isdigit(checkedDate[3]) && isdigit(checkedDate[5]) && isdigit(checkedDate[6]) && isdigit(checkedDate[8]) && isdigit(checkedDate[9]) )
-            {
+                    && isdigit(checkedDate[3]) && isdigit(checkedDate[5]) && isdigit(checkedDate[6]) && isdigit(checkedDate[8]) && isdigit(checkedDate[9]) ) {
                 dateDayString = checkedDate.substr(8,2);
                 dateMonthString = checkedDate.substr(5,2);
                 dateYearString = checkedDate.substr(0,4);
@@ -49,62 +46,47 @@ bool DateOperations::checkDateFormat(string checkedDate) {
                 dateYearInt = atoi(dateYearString.c_str());
 
 
-                if ((dateYearInt >= 2000 && dateYearInt < (ptr->tm_year+1900) && dateMonthInt <= 12) )
-                {
-                    if  (dateDayInt <= dayPerMonth(dateYearInt, dateMonthInt))
-                    {
+                if ((dateYearInt >= 2000 && dateYearInt < (ptr->tm_year+1900) && dateMonthInt <= 12) ) {
+                    if  (dateDayInt <= dayPerMonth(dateYearInt, dateMonthInt)) {
                         correctDateString = checkedDate;
                         dateToSort = dateYearInt * 10000 + dateMonthInt * 100 + dateDayInt;
                         return true;
                     }
 
-                    else
-                    {
+                    else {
                         checkedDate = takeNewDateToCheck();
                     }
-                }
-                else if (dateYearInt == (ptr->tm_year+1900) && dateMonthInt <= (ptr->tm_mon+1))
-                {
-                    if  (dateMonthInt < (ptr->tm_mon+1) && dateDayInt <= dayPerMonth(dateYearInt, dateMonthInt))
-                    {
+                } else if (dateYearInt == (ptr->tm_year+1900) && dateMonthInt <= (ptr->tm_mon+1)) {
+                    if  (dateMonthInt < (ptr->tm_mon+1) && dateDayInt <= dayPerMonth(dateYearInt, dateMonthInt)) {
                         correctDateString = checkedDate;
                         dateToSort = dateYearInt * 10000 + dateMonthInt * 100 + dateDayInt;
                         return true;
                     }
 
-                    else if (dateMonthInt == (ptr->tm_mon+1) && dateDayInt <= ptr->tm_mday)
-                    {
+                    else if (dateMonthInt == (ptr->tm_mon+1) && dateDayInt <= ptr->tm_mday) {
                         correctDateString = checkedDate;
                         dateToSort = dateYearInt * 10000 + dateMonthInt * 100 + dateDayInt;
                         return true;
-                    }
-                    else
-                    {
+                    } else {
                         checkedDate = takeNewDateToCheck();
                     }
-                }
-                else
-                {
+                } else {
                     checkedDate = takeNewDateToCheck();
                 }
 
-            }
-            else
-            {
+            } else {
                 checkedDate = takeNewDateToCheck();
             }
 
-        }
-        else
-        {
+        } else {
             checkedDate = takeNewDateToCheck();
         }
-    }
+
     return false;
+
 }
 
-int DateOperations::dayPerMonth (int year, int numberOfMonth)
-{
+int DateOperations::dayPerMonth (int year, int numberOfMonth) {
     if ((numberOfMonth==1)||(numberOfMonth==3)||(numberOfMonth==5)||
             (numberOfMonth==7)||(numberOfMonth==8)||(numberOfMonth==10)||
             (numberOfMonth==12))
@@ -114,16 +96,14 @@ int DateOperations::dayPerMonth (int year, int numberOfMonth)
              (numberOfMonth==11))
         return 30;
 
-    else if (numberOfMonth==2)
-    {
+    else if (numberOfMonth==2) {
 
         return (((year%4 == 0) && (year%100 != 0)) || (year%400 == 0))? 29 : 28; //Operator trojargumentowy
 
     }
 }
 
-string DateOperations::takeNewDateToCheck()
-{
+string DateOperations::takeNewDateToCheck() {
     string newDate;
     cout << "Date format is wrong, try again using yyyy-mm-dd format, starting from 2000-01-01.";
     cout << endl << "Date: ";
