@@ -2,6 +2,8 @@
 #define MONEYMANAGER_H
 
 #include <iostream>
+#include <algorithm>
+#include <iomanip>
 
 #include "ExpensesManager.h"
 #include "IncomesManager.h"
@@ -9,10 +11,16 @@
 using namespace std;
 
 class MoneyManager {
+
     const int LOGGED_IN_USER_ID;
 
     ExpensesManager expensesManager;
     IncomesManager incomesManager;
+    int takeMonthFromDate(string dateFromVector);
+    int takeYearFromDate(string dateFromVector);
+    void printChosenIncomesAndExpenses(vector<Income> incomes, vector<Expense> expenses);
+    void printBalance (vector<Income> incomes, vector<Expense> expenses);
+
 
 
 public:
@@ -24,7 +32,9 @@ public:
     void printAllIncomes();
     void addExpense();
     void printAllExpenses();
-
+    void balanceForTheCurrentMonth();
+    void balanceForTheLastMonth();
+    void balanceFromChoosenPeriod();
 
 };
 

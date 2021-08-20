@@ -12,12 +12,16 @@ class DateOperations {
 
     string correctDateString;
     int dateToSort;
-    int dayPerMonth (int year, int numberOfMonth);
-    string takeNewDateToCheck();
+    static string takeNewDateToCheck();
+    static int dayPerMonth (int year, int numberOfMonth);
 
 
 public:
+
     static string getSystemDate();
+    static string inputCorrectDateFormat(); //returns correct date
+    static bool isDateSmallerThanEndingDate(string date, string endingDate);
+    static bool isDateBiggerThanStartingDate(string date, string startingDate);
     bool checkDateFormat(string checkedDate);
     int getDateToSort();
     string getCorrectDateString ();

@@ -28,5 +28,7 @@ public:
     void printAllIncomes();
     void addExpense();
     void printAllExpenses();
-
+    void balanceForTheCurrentMonth();
+    void balanceForTheLastMonth();
+    void balanceFromChoosenPeriod();
 };

@@ -8,9 +8,13 @@
 #include "ExpensesFile.h"
 #include "DateOperations.h"
 
+
 using namespace std;
 
 class ExpensesManager {
+
+
+
     vector <Expense> expenses;
     const string EXPENSES_FILE_NAME;
     const int LOGGED_IN_USER_ID;
@@ -24,6 +28,9 @@ public:
     void addExpense();
     Expense getNewExpenseData();
     void printAllExpenses();
+    vector <Expense> getExpenses();
+
+    friend class MoneyManager;
 
 
 

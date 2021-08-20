@@ -69,9 +69,13 @@ void ExpensesManager::printAllExpenses() {
 void ExpensesManager::printExpense(Expense expense) {
 
     cout << endl << "Expense Id:                " << expense.getExpenseId() << endl;
-    cout << "UserId:                    " << expense.getUserId() << endl;
+    //cout << "UserId:                    " << expense.getUserId() << endl;
     cout << "Expense name:              " << expense.getItem() << endl;
     cout << "Expense amount:            " << expense.getAmount() << endl;
     cout << "Date:                      " << expense.getDate() << endl;
-    cout << "Date to sort:              " << expense.getDateToSort() << endl;
+    //cout << "Date to sort:              " << expense.getDateToSort() << endl;
+}
+
+vector<Expense> ExpensesManager::getExpenses() {
+    return expenses;
 }
