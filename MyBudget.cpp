@@ -8,6 +8,10 @@ void MyBudget::printAllUsers() {
     userManager.printAllUsers();
 }
 
+void MyBudget::changePassword() {
+    userManager.changePassword();
+}
+
 void MyBudget::userLogin() {
     userManager.login();
     if (userManager.isUserLoggedIn()) {

@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int mainTest() {
+int main() {
     MyBudget myBudget("users.xml", "expenses.xml", "incomes.xml");
     char choice;
     while (true) {
@@ -43,7 +43,7 @@ int mainTest() {
                 myBudget.balanceFromChoosenPeriod();
                 break;
             case '6':
-                //myBudget.passwordChange(); //To do zaimplementowania
+                myBudget.changePassword();
                 break;
             case '9':
                 myBudget.logout();
@@ -57,7 +57,7 @@ int mainTest() {
 }
 
 
-int main() {
+int mainTest() {
 
     MyBudget myBudget("users.xml", "expenses.xml", "incomes.xml");
     myBudget.userLogin();

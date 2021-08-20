@@ -59,3 +59,35 @@ vector<User> UserFile::loadUsersFromXml() {
     }
     return loadedUsers;
 }
+
+void UserFile::changePasswordInFile(int userId, string newPassword) {
+
+    string loggedInUserIdString = to_string(userId);
+    string idStringFromFile;
+    CMarkup usersXml;
+
+    bool fileExists = usersXml.Load(USER_FILE_NAME);//zwraca true gdzy plik udalo sie otworzyc
+    if (!fileExists) {
+        cout << "No " << USER_FILE_NAME << "file found."<< endl;
+        getch();
+    } else {
+        usersXml.ResetPos();
+        usersXml.FindElem();
+        usersXml.IntoElem();
+
+        while (usersXml.FindElem("User")) {
+            usersXml.IntoElem();
+            usersXml.FindElem("UserId");
+            idStringFromFile = usersXml.GetData();
+
+            if (loggedInUserIdString == idStringFromFile){
+                usersXml.FindElem("Password");
+                usersXml.SetData(newPassword);
+            }
+
+            usersXml.OutOfElem();
+
+        }
+    }
+    usersXml.Save(USER_FILE_NAME);
+}

@@ -75,7 +75,7 @@ int UserManager::login() {
     for (vector<User>::iterator itr = users.begin(), vecEnd = users.end(); itr < vecEnd; itr++) {
         if (itr -> getLogin() == inputLogin) {
             for (int numberOfTries = 3; numberOfTries > 0; numberOfTries--) {
-                cout << "Enter password. Number of tries left: " << numberOfTries << ": ";
+                cout << "Enter password. (Number of tries left: " << numberOfTries << ") : ";
                 inputPassword = UnasignedMethods::takeLine();
                 if (itr -> getPassword() == inputPassword) {
                     cout << "You have successfully logged in."<< endl << endl;
@@ -108,4 +108,29 @@ void UserManager::logout() {
     loggedInUserId = 0;
 }
 
+void UserManager::changePassword() {
 
+    string newPassword;
+    string oldPassword;
+    cout << "Enter new password: ";
+    newPassword = UnasignedMethods::takeLine();
+    cout << "Enter old password: ";
+    oldPassword = UnasignedMethods::takeLine();
+
+    for (vector<User>::iterator itr = users.begin(), vecEnd = users.end(); itr!= vecEnd; itr++) {
+        if (itr->getId() == loggedInUserId) {
+            if (itr->getPassword() != oldPassword){
+                cout << "Old password wrong!" << endl;
+                getch();
+                return;
+            }
+            itr->setPassword(newPassword);
+            cout << "Password has been changed. "<< endl << endl;
+
+            userFile.changePasswordInFile(loggedInUserId, newPassword);
+            system("pause");
+        }
+    }
+
+
+}

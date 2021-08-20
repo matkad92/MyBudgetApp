@@ -23,6 +23,7 @@ public:
     bool isUserLoggedOut();
     char chooseMainMenuOption();
     char chooseUserMenuOption();
+    void changePassword();
     void logout();
     void addIncome();
     void printAllIncomes();

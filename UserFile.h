@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <conio.h>
+#include <string>
 #include "FileXml.h"
 #include "User.h"
 
@@ -18,6 +19,7 @@ public:
     UserFile (string userFileName): USER_FILE_NAME(userFileName) {};
     void addUserToFile(User user);
     vector<User> loadUsersFromXml();
+    void changePasswordInFile(int userId, string newPassword);
 
 };
 
