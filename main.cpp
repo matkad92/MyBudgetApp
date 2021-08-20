@@ -28,19 +28,19 @@ int mainTest() {
             choice = myBudget.chooseUserMenuOption();
             switch (choice) {
             case '1':
-                //myBudget.addIncome();
+                myBudget.addIncome();
                 break;
             case '2':
-                //myBudget.addExpense();
+                myBudget.addExpense();
                 break;
             case '3':
-                //myBudget.balanceForTheCurrentMonth();
+                myBudget.balanceForTheCurrentMonth();
                 break;
             case '4':
-                //myBudget.lastMonthBalance();
+                myBudget.balanceForTheLastMonth();
                 break;
             case '5':
-                //myBudget.chosenPeriodBalance();
+                myBudget.balanceFromChoosenPeriod();
                 break;
             case '6':
                 //myBudget.passwordChange(); //To do zaimplementowania
@@ -61,7 +61,8 @@ int main() {
 
     MyBudget myBudget("users.xml", "expenses.xml", "incomes.xml");
     myBudget.userLogin();
-    myBudget.balanceForTheCurrentMonth();
+    //myBudget.balanceForTheCurrentMonth();
+    myBudget.balanceForTheLastMonth();
     getch();
     /*myBudget.addIncome();
     myBudget.addIncome();

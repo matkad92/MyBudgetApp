@@ -20,8 +20,7 @@ void MoneyManager::balanceForTheCurrentMonth() {
 
     vector<Income> currentMonthIncomes;
     vector<Expense> currentMonthExpenses;
-    Income income;
-    Expense expense;
+
     string dateFromVector;
     int monthToCompare;
     int yearToCompare;
@@ -61,6 +60,65 @@ void MoneyManager::balanceForTheCurrentMonth() {
 
     printChosenIncomesAndExpenses(currentMonthIncomes, currentMonthExpenses);
     printBalance (currentMonthIncomes, currentMonthExpenses);
+}
+
+void MoneyManager::balanceForTheLastMonth() {
+
+    vector<Income> lastMonthIncomes;
+    vector<Expense> lastMonthExpenses;
+
+    string dateFromVector;
+    int monthToCompare;
+    int yearToCompare;
+
+    time_t localTime;
+    struct tm * ptr;
+    time( & localTime );
+    ptr = localtime( & localTime );
+
+    int prevoiusMonth;
+    int previousMonthYear;
+
+    if ((ptr->tm_mon+1) > 1) {
+        prevoiusMonth = (ptr->tm_mon);
+        previousMonthYear = (ptr->tm_year+1900);
+    } else if ((ptr->tm_mon+1) == 1) {
+        prevoiusMonth = 12;
+        previousMonthYear = (ptr->tm_year+1900) - 1;
+    }
+
+    for (int i = 0; i < expensesManager.expenses.size(); i++) {
+        dateFromVector = expensesManager.expenses[i].getDate();
+
+        monthToCompare = takeMonthFromDate(dateFromVector);
+        yearToCompare = takeYearFromDate(dateFromVector);
+
+        if (yearToCompare == previousMonthYear && monthToCompare == prevoiusMonth) {
+            lastMonthExpenses.push_back(expensesManager.expenses[i]);
+        }
+    }
+
+    for (int i = 0; i < incomesManager.incomes.size(); i++) {
+        dateFromVector = incomesManager.incomes[i].getDate();
+
+        monthToCompare = takeMonthFromDate(dateFromVector);
+        yearToCompare = takeYearFromDate(dateFromVector);
+
+        if (yearToCompare == previousMonthYear && monthToCompare == prevoiusMonth) {
+            lastMonthIncomes.push_back(incomesManager.incomes[i]);
+        }
+    }
+
+
+    sort(lastMonthIncomes.begin(), lastMonthIncomes.end());
+    sort(lastMonthExpenses.begin(), lastMonthExpenses.end());
+
+    printChosenIncomesAndExpenses(lastMonthIncomes, lastMonthExpenses);
+    printBalance (lastMonthIncomes, lastMonthExpenses);
+}
+
+void MoneyManager::balanceFromChoosenPeriod() {
+    return;
 }
 
 int MoneyManager::takeMonthFromDate(string dateFromVector) {
