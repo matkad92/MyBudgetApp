@@ -118,7 +118,50 @@ void MoneyManager::balanceForTheLastMonth() {
 }
 
 void MoneyManager::balanceFromChoosenPeriod() {
-    return;
+
+    vector<Income> ChoosenPeriodIncomes;
+    vector<Expense> ChoosenPeriodExpenses;
+
+
+
+    string dateFromVector;
+    cout << "Choose starting date ( rrrr-mm-dd ):";
+    string startingDate = DateOperations::inputCorrectDateFormat();
+    cout << endl << "Choose ending date ( rrrr-mm-dd ):";
+    string endingDate = DateOperations::inputCorrectDateFormat();
+
+    if (!(DateOperations::isDateSmallerThanEndingDate(startingDate,endingDate))) {
+        cout << "Wrong dates! Starting date can not be more recent than ending date.";
+        getch();
+        return;
+    }
+
+
+    for (int i = 0; i < expensesManager.expenses.size(); i++) {
+        dateFromVector = expensesManager.expenses[i].getDate();
+
+
+        if (DateOperations::isDateSmallerThanEndingDate(dateFromVector,endingDate) && DateOperations::isDateBiggerThanStartingDate(dateFromVector,startingDate)) {
+            ChoosenPeriodExpenses.push_back(expensesManager.expenses[i]);
+        }
+    }
+
+    for (int i = 0; i < incomesManager.incomes.size(); i++) {
+        dateFromVector = incomesManager.incomes[i].getDate();
+
+
+        if (DateOperations::isDateSmallerThanEndingDate(dateFromVector,endingDate) && DateOperations::isDateBiggerThanStartingDate(dateFromVector,startingDate)) {
+            ChoosenPeriodIncomes.push_back(incomesManager.incomes[i]);
+        }
+    }
+
+
+    sort(ChoosenPeriodIncomes.begin(), ChoosenPeriodIncomes.end());
+    sort(ChoosenPeriodExpenses.begin(), ChoosenPeriodExpenses.end());
+
+    printChosenIncomesAndExpenses(ChoosenPeriodIncomes, ChoosenPeriodExpenses);
+    printBalance (ChoosenPeriodIncomes, ChoosenPeriodExpenses);
+
 }
 
 int MoneyManager::takeMonthFromDate(string dateFromVector) {

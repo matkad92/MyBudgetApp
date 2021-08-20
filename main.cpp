@@ -46,7 +46,7 @@ int mainTest() {
                 //myBudget.passwordChange(); //To do zaimplementowania
                 break;
             case '9':
-                //myBudget.logOut();
+                myBudget.logout();
                 break;
             }
         }
@@ -62,7 +62,8 @@ int main() {
     MyBudget myBudget("users.xml", "expenses.xml", "incomes.xml");
     myBudget.userLogin();
     //myBudget.balanceForTheCurrentMonth();
-    myBudget.balanceForTheLastMonth();
+    //myBudget.balanceForTheLastMonth();
+    myBudget.balanceFromChoosenPeriod();
     getch();
     /*myBudget.addIncome();
     myBudget.addIncome();
