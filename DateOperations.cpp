@@ -181,7 +181,7 @@ int DateOperations::getDateToSort() {
     return dateToSort;
 }
 
-bool DateOperations::isDateSmallerThanEndingDate (string date, string endingDate) {
+bool DateOperations::isDateSmallerThanEndingDate (string date, string endingDate) { //Bigger or equal
 
     string dateDayString = date.substr(8,2);
     string dateMonthString = date.substr(5,2);
@@ -204,7 +204,7 @@ bool DateOperations::isDateSmallerThanEndingDate (string date, string endingDate
         if (endingDateMonthString == dateMonthString)
         {
 
-            if (endingDateDayString > dateDayString)
+            if (endingDateDayString >= dateDayString)
             {
                return true;
             }
@@ -214,7 +214,7 @@ bool DateOperations::isDateSmallerThanEndingDate (string date, string endingDate
     return false;
 }
 
-bool DateOperations::isDateBiggerThanStartingDate (string date, string startingDate) {
+bool DateOperations::isDateBiggerThanStartingDate (string date, string startingDate) { //Bigger or equal
 
     string dateDayString = date.substr(8,2);
     string dateMonthString = date.substr(5,2);
@@ -237,7 +237,7 @@ bool DateOperations::isDateBiggerThanStartingDate (string date, string startingD
         if (dateMonthString == startingDateMonthString)
         {
 
-            if (dateDayString > startingDateDayString)
+            if (dateDayString >= startingDateDayString)
             {
                return true;
             }
